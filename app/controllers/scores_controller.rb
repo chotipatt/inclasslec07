@@ -4,15 +4,19 @@ class ScoresController < ApplicationController
   # GET /scores or /scores.json
   def index
     @scores = Score.all
+    session[:from] = "score"
+    session[:func] = ""
   end
 
   # GET /scores/1 or /scores/1.json
   def show
+  
   end
 
   # GET /scores/new
   def new
-    @score = Score.new
+   @score = Score.new
+    #redirect_to aaa_path(@score.id)
   end
 
   # GET /scores/1/edit

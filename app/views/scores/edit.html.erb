@@ -1,10 +1,19 @@
 <h1>Editing score</h1>
 
+<% if session[:from] == "score" %>
+  <%= simple_format("Student id = " + @score.student_id.to_s) %>
+<%end%>
+
 <%= render "form", score: @score %>
 
 <br>
 
 <div>
-  <%= link_to "Show this score", @score %> |
-  <%= link_to "Back to scores", scores_path %>
+    <%= link_to "Show this score", @score %> 
+    <% if session[:from] == "student" %>
+      <%= link_to "Back to scores", students_path %>
+    <% elsif session[:from] == "score" %> 
+      <%= link_to "Back to scores", scores_path %>
+    <%end%>
 </div>
+

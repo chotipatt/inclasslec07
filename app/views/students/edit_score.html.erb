@@ -1,5 +1,15 @@
 <h1>Edit Score</h1>
 
 <%if !@empty %>
-    <%="No Empty!!!!"%>
+    <% @scorestudent.each do |score| %>
+        <%= render score %>
+        <%= button_to "Edit Score", edit_score_path(@s.id) , method: :get %>
+        <%= button_to "Delete Score", score , method: :delete %>
+    <%end%>
 <%end%>
+<br>
+<%= button_to "New Score", new_score_path , method: :get %>
+<h2>Summary</h2>
+<%= "Average Score " + @avg.to_s %>
+<br>
+<%= "Max Subject Score " + @maxsub.to_s %>

@@ -21,13 +21,26 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit_score
   def edit_score
-    @scorestudent = Score.where(id:params[:id])
+    session[:from] = "student"
+    @s = @student
+    @scorestudent = Score.where(student_id:@s.id)
+
+    sum = 0
+    max = 0
+    @maxsub = ""
+    @scorestudent.each do |i|
+      if i.point > max 
+        max = i.point
+        @maxsub = i.subject
+      end 
+      sum += i.point
+    end
+    @avg = sum/@scorestudent.count
+
     @empty = true
     if !@scorestudent.blank?
       @empty = false
-      @studentpp = @student
     end
-
   end
 
 
