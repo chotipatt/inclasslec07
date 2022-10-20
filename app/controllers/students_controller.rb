@@ -35,7 +35,12 @@ class StudentsController < ApplicationController
       end 
       sum += i.point
     end
-    @avg = sum/@scorestudent.count
+    
+    if @scorestudent.count == 0 
+      @avg = sum
+    else
+      @avg = sum/@scorestudent.count
+    end
 
     @empty = true
     if !@scorestudent.blank?

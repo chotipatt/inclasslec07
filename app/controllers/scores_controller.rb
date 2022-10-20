@@ -5,7 +5,6 @@ class ScoresController < ApplicationController
   def index
     @scores = Score.all
     session[:from] = "score"
-    session[:func] = ""
   end
 
   # GET /scores/1 or /scores/1.json
