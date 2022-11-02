@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lec07</title>
+    <title>Lec09</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <%= flash.each do |type,msg|%>
+        <p>
+          <%=msg%>
+        </p>
+      <%end%>
+      <%= yield %>
+    </div>
   </body>
 </html>

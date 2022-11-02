@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_action :has_student, only: %i[edit_score]
+  before_action :must_login, only: %i[show new edit create update destroy]
   before_action :set_student, only: %i[ show edit update destroy edit_score]
 
   # GET /students or /students.json
@@ -96,5 +98,14 @@ class StudentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def student_params
       params.require(:student).permit(:name, :dob, :student_no, :class_year)
+    end
+
+    #Check id of student is correct?
+    def has_student
+      if Student.where(id: params[:id]).empty?
+        redirect_to students_path, notice: 'Not has this id in database'  
+      else
+        return true
+      end
     end
 end

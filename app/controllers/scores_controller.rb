@@ -1,4 +1,5 @@
 class ScoresController < ApplicationController
+  before_action :must_login
   before_action :set_score, only: %i[ show edit update destroy ]
 
   # GET /scores or /scores.json
@@ -70,4 +71,5 @@ class ScoresController < ApplicationController
     def score_params
       params.require(:score).permit(:subject, :point, :grade, :student_id)
     end
+
 end

@@ -3,7 +3,9 @@
 <%if !@empty %>
     <% @scorestudent.each do |score| %>
         <%= render score %>
-        <%= button_to "Edit Score", edit_score_path(@s.id) , method: :get %>
+        <% if session[:login] %>
+            <%= button_to "Edit Score", edit_score_path(@s.id) , method: :get %>
+        <%end%>
         <%= button_to "Delete Score", score , method: :delete %>
     <%end%>
 <%end%>

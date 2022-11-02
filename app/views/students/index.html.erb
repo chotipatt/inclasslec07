@@ -7,7 +7,9 @@
     <%= render student %>
     <p>
       <%= link_to "Show this student", student %>
-      <%= link_to "Edit Score", aaa_path(student.id) , stu:student %>
+      <% if session[:login] %>
+        <%= link_to "Edit Score", aaa_path(student.id) , stu:student %>
+      <%end%>
     </p>
   <% end %>
 </div>
