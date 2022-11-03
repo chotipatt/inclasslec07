@@ -2,9 +2,13 @@
 
 <%= render @student %>
 
-<div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
-  <%= link_to "Back to students", students_path %>
+<div class='btn-group'>
+  <%= link_to "Edit this student", edit_student_path(@student) , class:'btn btn-outline-primary'%>
+  <%= link_to "Back to students", students_path , class: 'btn btn-outline-primary'%>
 
-  <%= button_to "Destroy this student", @student, method: :delete %>
 </div>
+
+<br>
+<br>
+<%= button_to "Destroy this student", @student, method: :delete , class: 'btn btn-danger' %>
+

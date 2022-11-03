@@ -1,15 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Scores</h1>
 
-<div id="scores">
-  <% @scores.each do |score| %>
-    <%= render score %>
-    <p>
-      <%= link_to "Show this score", score %>
-    </p>
-  <% end %>
-</div>
+<% @scores.each do |score| %>
+  <div class='card'>
+    <div class='card-body'>
+      <%= render score %>
+      <%= link_to "Show this score", score , class: 'btn btn-outline-primary'%>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to "New score", new_score_path %>
- <%# new_score_path  %>
+
+<%= link_to "New score", new_score_path , class: 'btn btn-success'%>

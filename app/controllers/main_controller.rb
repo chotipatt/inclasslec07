@@ -9,7 +9,7 @@ class MainController < ApplicationController
       redirect_to students_path
       session[:login] = true
     else
-      redirect_to main_login_path, notice: 'login or password incorrect'
+      redirect_to main_login_path, alert: 'login or password incorrect'
     end
   end
 

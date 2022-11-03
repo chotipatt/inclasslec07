@@ -2,16 +2,32 @@
 
 <%if !@empty %>
     <% @scorestudent.each do |score| %>
-        <%= render score %>
-        <% if session[:login] %>
-            <%= button_to "Edit Score", edit_score_path(@s.id) , method: :get %>
-        <%end%>
-        <%= button_to "Delete Score", score , method: :delete %>
+        <div class='card'>
+            <div class='class-body'>
+                <%= render score %>
+                <div class='row row-cols-auto'>
+                    <div class='col'>
+                        <% if session[:login] %>
+                            <%= button_to "Edit Score", edit_score_path(@s.id) , class: 'btn btn-secondary', method: :get %>
+                        <%end%>
+                    </div>
+                    <div class='col'>
+                        <%= button_to "Delete Score", score, class: 'btn btn-danger', method: :delete %>
+                    </div>
+                </div>
+            </div>
+        </div>
     <%end%>
 <%end%>
+
 <br>
-<%= button_to "New Score", new_score_path , method: :get %>
-<h2>Summary</h2>
-<%= "Average Score " + @avg.to_s %>
-<br>
-<%= "Max Subject Score " + @maxsub.to_s %>
+<div class='card'>
+    <h4 class='card-header'>Summary</h4>
+    <div class='class-body'>
+        <p class='card-text'><%= "Average Score " + @avg.to_s %></p>
+        <p class='card-text'><%= "Max Subject Score " + @maxsub.to_s %></p>
+        <%= button_to "New Score", new_score_path, class: 'btn btn-success', method: :get %>
+    </div>
+</div>
+
+

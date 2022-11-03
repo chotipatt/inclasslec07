@@ -4,15 +4,20 @@
 
 <div id="students">
   <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-      <% if session[:login] %>
-        <%= link_to "Edit Score", aaa_path(student.id) , stu:student %>
-      <%end%>
-    </p>
-  <% end %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <%= render student %>
+        <div class = 'row row-cols-2'>
+          <%= link_to "Show this student", student , class: 'btn btn-primary'%>
+          <% if session[:login] %>
+            <%= link_to "Edit Score", aaa_path(student.id) , stu:student , class: 'btn btn-light'%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <br>
+  <%end%>
 </div>
 
-<%= link_to "New student", new_student_path %>
+<%= link_to "New student", new_student_path , class: 'btn btn-success' %>
 

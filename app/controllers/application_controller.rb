@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
         if login?
             return true
         else
-            redirect_to main_login_path, notice: 'you must login befor access next page'
+            redirect_to main_login_path, alert: 'you must login before access next page'
         end
     end
 
